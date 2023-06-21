@@ -34,4 +34,13 @@ class Restaurant extends Model
     {
         return $this->hasMany(MenuItem::class, 'restaurant_id');
     }
+
+
+    /**
+     * Referencing the foreign key in Orders table
+     */
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'restaurant_id');
+    }
 }

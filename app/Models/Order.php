@@ -12,6 +12,7 @@ class Order extends Model
     protected $fillable = [
         'menu_id',
         'user_id',
+        'restaurant_id',
         'bowl_qty',
         'total_amount',
         'order_status',
@@ -34,6 +35,15 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    /**
+    * Referencing the primary key in restaurant table
+    */
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class, 'restaurant_id');
     }
 
 
