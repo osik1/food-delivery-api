@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::post('/reset-password', [UserController::class, 'resetPassword'])->name('
  * ROUTES THAT REQUIRE USERS TO BE AUTHENTICATED BEFORE HAVING ACCESS
  */
 Route::group(['middleware' => 'auth:sanctum'], function(){
+
     /**
     * ROUTES FOR USER ACCOUNTS
     */
@@ -34,6 +36,31 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('/change-password', [UserController::class, 'changePassword']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/users', [UserController::class, 'index']);
+
+
+    /**
+     * ROUTES FOR RESTAURANTS
+     */
+    Route::get('/restaurants', [RestaurantController::class, 'index']);
+    Route::get('/count-restaurants', [RestaurantController::class, 'countRestaurants']);
+    Route::get('/restaurant/{id}', [RestaurantController::class, 'show']);
+    Route::post('/restaurant', [RestaurantController::class, 'store']);
+    Route::put('/restaurant/{id}', [RestaurantController::class, 'update']);
+    Route::delete('/del-restaurant/{id}', [RestaurantController::class, 'destroy']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('restaurant_id')->unsigned()->nullable()->index();
             $table->string('food_name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('price_per_bowl');
             $table->timestamps();
         });
