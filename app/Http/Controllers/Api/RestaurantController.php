@@ -63,7 +63,7 @@ class RestaurantController extends BaseController
             $restaurant->user_id = $restaurantOwner;
             $restaurant->image = $restaurantImage;
             $restaurant->save();
-            return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant created successully');
+            return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant created successfully');
         }
         return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
 
@@ -82,7 +82,7 @@ class RestaurantController extends BaseController
         {
             return $this->sendError('Error', 'Restaurant not found');
         }
-        return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant created successully');
+        return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant retrieved successfully');
     }
 
    
@@ -122,7 +122,7 @@ class RestaurantController extends BaseController
             $restaurant->phone = $input['phone'];
             $restaurant->image = $restaurantImage;
             $restaurant->save();
-            return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant details updated successully');
+            return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant details updated successfully');
         } 
         return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
 

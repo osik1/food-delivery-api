@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\RestaurantController;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\API\MenuItemController;
+use App\Http\Controllers\API\RestaurantController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,17 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('/restaurant', [RestaurantController::class, 'store']);
     Route::put('/restaurant/{id}', [RestaurantController::class, 'update']);
     Route::delete('/del-restaurant/{id}', [RestaurantController::class, 'destroy']);
+
+
+    /**
+    * ROUTES FOR MENU ITEMS
+    */
+    Route::get('/menus', [MenuItemController::class, 'index']);
+    Route::get('/count-menu', [MenuItemController::class, 'countMenus']);
+    Route::get('/menu/{id}', [MenuItemController::class, 'show']);
+    Route::post('/menu', [MenuItemController::class, 'store']);
+    Route::put('/menu/{id}', [MenuItemController::class, 'update']);
+    Route::delete('/del-menu/{id}', [MenuItemController::class, 'destroy']);
 
 
 
