@@ -14,10 +14,15 @@ class Order extends Model
         'user_id',
         'restaurant_id',
         'bowl_qty',
-        'total_amount',
-        'order_status',
+        'total_amount',   
     ];
 
+    // Securing these fields
+    protected $guarded = [
+        'receipt_status',
+        'order_status',
+        'delete_status'
+    ];
 
     /**
     * Referencing the primary key in menu_items table
