@@ -111,7 +111,7 @@ class OrderController extends BaseController
 
         // Now let's create the order
         $order = Order::create($input);
-        // $order->order_code = uniqid();
+        $order->order_code = uniqid();
         $order->restaurant_id = $restaurant_id;
         $order->menu_id = $menu_id;
         $order->user_id = $user_id;

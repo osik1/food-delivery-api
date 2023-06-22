@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->uniqid('order_code');
+            $table->string('order_code')->nullable();
             $table->bigInteger('restaurant_id')->unsigned()->nullable()->index();
             $table->bigInteger('menu_id')->unsigned()->nullable()->index();
             $table->bigInteger('user_id')->unsigned()->nullable()->index();
