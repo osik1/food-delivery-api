@@ -28,25 +28,22 @@ class OrderController extends BaseController
             $restaurant_id = $restaurant->id; 
             // get all orders with the restaurant id
             $order = QueryBuilder::for(Order::class)
-            ->allowedFilters('menu_name', 'total_amount', 'user.name', 'order_code')
+            ->allowedFilters('menu.food_name', 'total_amount', 'user.name', 'order_code')
             ->where('restaurant_id', $restaurant_id)
             ->get();
             return $this->sendResponse(OrderResource::collection($order), 'Orders retrieved successfully.');
         }
 
         // if the one checking orders is a user
-        if(Auth::user()->role == 0)
-        {
             //Get user id
-            $user_id = Auth::user()->id;
-            $order = QueryBuilder::for(Order::class)
-            ->allowedFilters('menu_name', 'total_amount', 'order_code')
-            ->where('user_id', $user_id)
-            ->where('delete_status', 1)
-            ->get();
-            return $this->sendResponse(OrderResource::collection($order), 'Your 0rders retrieved successfully.');
-        }
-        return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
+        $user_id = Auth::user()->id;
+        $order = QueryBuilder::for(Order::class)
+        ->allowedFilters('menu.food_name', 'total_amount', 'order_code', 'user.name')
+        ->where('user_id', $user_id)
+        ->where('delete_status', 1)
+        ->get();
+        return $this->sendResponse(OrderResource::collection($order), 'Your 0rders retrieved successfully.');
+        
     }
 
 
@@ -265,7 +262,7 @@ class OrderController extends BaseController
             $order->save();
             return $this->sendResponse(new OrderResource($order), 'Order set to received successfully');
         }
-    
+        return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
     }
 
 
@@ -287,7 +284,7 @@ class OrderController extends BaseController
             $order->save();
             return $this->sendResponse(new OrderResource($order), 'Order set to cancelled successfully');
         }
-    
+       return $this->sendError('Unauthorised', ['error' => 'Unauthorised']);
     }
 
 

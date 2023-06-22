@@ -40,7 +40,7 @@ class UserController extends BaseController
             $user->save();
         }
         $success['token'] = $user->createToken('MyApp')->plainTextToken;
-        $success['username'] = $user->username;
+        $success['username'] = $user->name;
         $success['id'] = $user->id;
         return $this->sendResponse($success, 'User registered successfully.'); 
 
@@ -63,7 +63,7 @@ class UserController extends BaseController
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->plainTextToken;
-            $success['name'] = $user->username;
+            $success['name'] = $user->name;
             $success['email'] = $user->email;
             $success['phone'] = $user->phone;
             $success['location'] = $user->location;
@@ -200,8 +200,7 @@ class UserController extends BaseController
     {
         
         $users = QueryBuilder::for(User::class)
-        ->allowedFilters('name', 'role', 'location')
-        ->where('status', 1)
+        ->allowedFilters('name', 'location')
         ->get();
         return $this->sendResponse(UserResource::collection($users), 'Users retrieved successfully.');
     

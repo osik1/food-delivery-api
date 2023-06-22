@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
      * ROUTES FOR RESTAURANTS
      */
     Route::post('/restaurant', [RestaurantController::class, 'store']);
-    Route::put('/restaurant/{id}', [RestaurantController::class, 'update']);
+    Route::post('/restaurant/{id}', [RestaurantController::class, 'update']);
     Route::delete('/del-restaurant/{id}', [RestaurantController::class, 'destroy']);
 
 
@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     * ROUTES FOR MENU ITEMS
     */
     Route::post('/menu', [MenuItemController::class, 'store']);
-    Route::put('/menu/{id}', [MenuItemController::class, 'update']);
+    Route::post('/menu/{id}', [MenuItemController::class, 'update']);
     Route::delete('/del-menu/{id}', [MenuItemController::class, 'destroy']);
 
 

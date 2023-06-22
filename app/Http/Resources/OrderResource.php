@@ -28,7 +28,7 @@ class OrderResource extends JsonResource
             'customer_name' => with(new User())->find($this->user_id)->name ?? 'Unknown',
             'bowl_qty' => $this->bowl_qty,
             'total_amount' => $this->total_amount,
-            'receipt_status' => $this->receipt_status == 2 ? 'Cancelled' : ($this->role == 1 ? 'Received' : 'Waiting for food'),
+            'receipt_status' => $this->receipt_status == 2 ? 'Cancelled' : ($this->receipt_status == 1 ? 'Received' : 'Waiting for food'),
             'order_status' => $this->order_status == 3 ? 'Delivered' : ($this->order_status == 2 ? 'Delivering' : ($this->order_status == 1 ? 'Processing' : 'Received')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
