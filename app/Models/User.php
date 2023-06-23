@@ -25,15 +25,16 @@ class User extends Authenticatable
         'gps',
         'avatar',
         'password',
+        'role'
     ];
 
 
     /**
      * Protect the role field
      */
-    protected $guarded = [
-        'role'
-    ];
+    // protected $guarded = [
+    //     'role'
+    // ];
 
 
     /**
