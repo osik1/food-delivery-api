@@ -56,6 +56,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('/change-password', [UserController::class, 'changePassword']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/users', [UserController::class, 'index']);
+    Route::put('/make-rest-owner/{user_id}', [UserController::class, 'makeResOwner']);
+
 
 
     /**

@@ -206,6 +206,33 @@ class UserController extends BaseController
     
     }
 
+
+
+    /**
+     * Make a user a restaurant owner
+     */
+    public function makeResOwner($user_id)
+    {
+        // only admin can perform this action
+        if (Auth::user()->role == 2)
+        {
+            //find the user with that user id
+            $user = User::find($user_id);
+            if (is_null($user))
+            {
+                return $this->sendError('Error', 'User not found');
+            }
+            // if found, set user role to 1
+            $user->role = 1;
+            $user->save();
+            return $this->sendResponse(new UserResource($user), 'User given a restaurant owner right successfully');
+        }
+        return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
+    }
+
+
+
+    
     /**
      * Show the form for creating a new resource.
      */
