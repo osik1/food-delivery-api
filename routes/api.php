@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\API\MenuItemController;
-use App\Http\Controllers\API\OrderController;
-use App\Http\Controllers\API\RestaurantController;
-use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\Api\MenuItemController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
