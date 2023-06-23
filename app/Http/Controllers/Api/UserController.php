@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Controllers\Api\BaseController as BaseController;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
